@@ -34,9 +34,11 @@
         <tr>
 
             <td>Name</td>
+            <td>ID</td>
             <td>size</td>
             <td>uploadDate</td>
             <td>md5</td>
+            <td>删除</td>
         </tr>
         </thead>
         <tbody>
@@ -45,14 +47,23 @@
         </tr>
         <tr th:each="filesEntity : ${files}">
             <td><a th:href="'files/'+${filesEntity.id}" th:text="${filesEntity.name}"/></td>
+            <td th:text="${filesEntity.id }"></td>
             <td th:text="${filesEntity.size }/1024  +'kb'"></td>
             <td th:text="${#dates.format(filesEntity.uploadDate,'yyyy-MM-dd HH:mm:ss')}"></td>
             <td th:text="${filesEntity.md5}"></td>
+            <td><a href="javascript:;" th:onclick="handleDelete([[${filesEntity.id}]])">删除</a></td>
         </tr>
         </tbody>
     </table>
 </div>
 
 <div th:replace="~{fragments/footer :: footer}">...</div>
+<script>
+    function handleDelete(id) {
+        $.ajax('/' + id, {type: "DELETE"}, function (data) {
+            alert(data);
+        })
+    }
+</script>
 </body>
 </html>

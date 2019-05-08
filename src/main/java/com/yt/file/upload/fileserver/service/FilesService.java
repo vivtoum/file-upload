@@ -3,6 +3,7 @@
  */
 package com.yt.file.upload.fileserver.service;
 
+import com.yt.file.upload.fileserver.domain.Files;
 import com.yt.file.upload.fileserver.domain.FilesEntity;
 
 import java.util.List;
@@ -21,7 +22,7 @@ public interface FilesService {
      * @param File
      * @return
      */
-    FilesEntity saveFile(FilesEntity filesEntity);
+    Files saveFile(FilesEntity filesEntity);
 
     /**
      * 删除文件
@@ -43,5 +44,5 @@ public interface FilesService {
      * @param pageSize
      * @return
      */
-    List<FilesEntity> listFilesByPage(int pageIndex, int pageSize);
+    List<Files> listFilesByPage(int pageIndex, int pageSize);
 }

@@ -8,8 +8,6 @@ eureka:
       defaultZone: http://www.vivtoum.tech:1001/eureka/
 
 spring:
-  application:
-    name: files-io
   #thymeleaf
   thymeleaf:
     cache: false
@@ -17,8 +15,8 @@ spring:
     suffix: .html
     encoding: utf-8
     mode: LEGACYHTML5
-  rabbitmq:                    #±¾µØ»·¾³²»ĞèÒªÅäÖÃmq£¬µ«ÊÇĞèÒªÆô¶¯mq,Springboot»á×Ô¶¯Á¬½Ó±¾µØmq
-      host: www.vivtoum.tech
+  rabbitmq:
+    host: www.vivtoum.tech
     port: 5672
     username: admin
     password: admin
@@ -36,3 +34,55 @@ spring:
     multipart:
       max-file-size: 1024MB
       max-request-size: 1024MB
+
+  datasource:
+    url: jdbc:mysql://www.vivtoum.tech:3306/cloud?characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: Vedyou@163.com
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    ######################### Druidè¿æ¥æ± çš„é…ç½®ä¿¡æ¯  #################
+    type: com.alibaba.druid.pool.DruidDataSource
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECTÂ 1Â FROMÂ DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+
+    #Â Â Â é…ç½®ç›‘æ§ç»Ÿè®¡æ‹¦æˆªçš„filtersï¼Œå»æ‰åç›‘æ§ç•Œé¢sqlæ— æ³•ç»Ÿè®¡ï¼Œ'wall'ç”¨äºé˜²ç«å¢™
+    filters: stat,wall
+    maxPoolPreparedStatementPerConnectionSize: 20
+    useGlobalDataSourceStat: true
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+  redis:
+    host: www.vivtoum.tech
+    port: 6379
+    password: QQqq407716220
+    lettuce:
+      pool:
+        max-idle: 10
+        max-active: 10
+        min-idle: 5
+        max-wait: 100000
+    database: 0
+    timeout: 100000
+
+  jpa:
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+  http:
+    encoding:
+      charset: utf-8
+      enabled: true
