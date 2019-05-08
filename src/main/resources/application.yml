@@ -1,0 +1,38 @@
+server:
+  port: 2003
+  address: localhost
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://www.vivtoum.tech:1001/eureka/
+
+spring:
+  application:
+    name: files-io
+  #thymeleaf
+  thymeleaf:
+    cache: false
+    prefix: classpath:/view/
+    suffix: .html
+    encoding: utf-8
+    mode: LEGACYHTML5
+  rabbitmq:                    #本地环境不需要配置mq，但是需要启动mq,Springboot会自动连接本地mq
+      host: www.vivtoum.tech
+    port: 5672
+    username: admin
+    password: admin
+
+  resources:
+    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/
+  #mongodb
+  data:
+    mongodb:
+      uri: mongodb://vedyou:QQqq407716220@www.vivtoum.tech:27017/filesDb
+  #mongodb://username:password@ip:port/database
+  main:
+    allow-bean-definition-overriding: true
+  servlet:
+    multipart:
+      max-file-size: 1024MB
+      max-request-size: 1024MB
