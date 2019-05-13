@@ -8,6 +8,8 @@ eureka:
       defaultZone: http://www.vivtoum.tech:1001/eureka/
 
 spring:
+  application:
+    name: file-io
   #thymeleaf
   thymeleaf:
     cache: false
